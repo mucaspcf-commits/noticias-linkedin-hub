@@ -4,8 +4,8 @@ Central de notícias e rascunhos para LinkedIn em português e inglês. Interfac
 
 ## Cobertura
 
-24 temas × Brasil e Mundo = **48 seções**:
-Tecnologia; Analytics & Dados; Inovação & Startups; Negócios & Economia; Inteligência Artificial; Cibersegurança & Privacidade; Cloud & Infraestrutura; Software & Engenharia; Produto & UX; Projetos & Agilidade; Análise de Negócios; Automação & Robótica; Fintechs & Pagamentos; Finanças & Investimentos; Marketing & Vendas; E-commerce & Varejo; Liderança & Gestão; Carreira & Futuro do Trabalho; Sustentabilidade & Energia; Logística & Operações; Healthtech & Biotecnologia; Agtech & Agronegócio; Ciência & Tecnologias Emergentes; Governança & Regulação.
+30 temas + 120 subtemas, em Brasil e Mundo = **300 recortes de consulta**:
+Tecnologia; Analytics & Dados; Inovação & Startups; Negócios & Economia; Inteligência Artificial; Cibersegurança & Privacidade; Cloud & Infraestrutura; Software & Engenharia; Produto & UX; Projetos & Agilidade; Análise de Negócios; Automação & Robótica; Fintechs & Pagamentos; Finanças & Investimentos; Marketing & Vendas; E-commerce & Varejo; Liderança & Gestão; Carreira & Futuro do Trabalho; Sustentabilidade & Energia; Logística & Operações; Healthtech & Biotecnologia; Agtech & Agronegócio; Ciência & Tecnologias Emergentes; Governança & Regulação; Pessoas & RH; Edtech & Aprendizagem; Experiência do Cliente; Govtech & Serviços Públicos; Mobilidade & Cidades Inteligentes; Blockchain & Economia Digital.
 
 As fontes combinam pesquisas RSS temáticas do Google Notícias e feeds diretos das categorias originais: Tecnoblog, Data Hackers, Startups.com.br, Brazil Journal, The Verge, AWS Big Data Blog, TechCrunch e CNBC. O nome do veículo e o link acompanham cada notícia. A presença no agregador não equivale a uma checagem editorial. Notícias podem se repetir entre temas relacionados; duplicatas dentro da mesma seção são removidas.
 
@@ -42,7 +42,7 @@ O site Pages usa notícias coletadas na última execução, com a data de coleta
 npm run build:pages
 ```
 
-O build usa até quatro coletas simultâneas, com timeout por fonte. Quando todas falham, o build é interrompido para preservar a publicação anterior. Se uma seção falhar, o site informa a indisponibilidade sem fabricar notícias. Cada deploy substitui os dados da edição anterior; favoritos ficam no navegador.
+O build usa até quatro coletas simultâneas, com timeout por fonte. Quando mais de 30% das consultas falham, o build é interrompido para preservar a publicação anterior. Se uma seção falhar, usa a edição anterior disponível no cache, com aviso e data original; sem cache, informa a indisponibilidade. Cada deploy substitui os dados da edição anterior; favoritos ficam no navegador.
 
 ## Verificação
 
@@ -63,3 +63,11 @@ Os testes cobrem catálogo, IDs únicos, deduplicação, datas inválidas, URLs 
 - `.github/workflows/pages.yml`: publicação e atualização das notícias.
 
 Nenhum post é enviado automaticamente ao LinkedIn. A publicação é sempre feita pelo usuário após revisão.
+
+## Idioma e organização
+
+Use **Português / English** para trocar toda a interface e os nomes dos temas/subtemas. A preferência fica salva no navegador. Notícias preservam o idioma da fonte. Escolha o recorte Brasil/Mundo separadamente. Cada tema oferece uma visão geral e quatro subtemas pesquisados individualmente. Consulte [a auditoria e o catálogo completo](docs/AUDITORIA.md).
+
+## English
+
+A bilingual professional news hub: 30 topics, 120 subtopics and five editorial families. Use the **Português / English** buttons to switch the interface, then choose Brazil or World and a subtopic. Stories retain their source language. Run `npm ci && npm start` with Node 22+ for the API version, or `npm run build:pages` for static publishing. GitHub Actions refreshes the static edition every three hours. The static edition uses local draft templates; Gemini requires the Node server and your own session key.
