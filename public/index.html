@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Seu radar profissional: 30 temas e 120 subtemas de tecnologia, dados e negócios, com notícias do Brasil e do mundo."
+    />
+    <title>Notícias Hub · Seu radar profissional</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Pular para notícias</a>
+    <aside class="sidebar">
+      <a href="./" class="brand"
+        ><strong>N<span>·</span></strong>
+        <div>notícias<small>HUB / RADAR PROFISSIONAL</small></div></a
+      >
+      <div class="regions" role="group" aria-label="Região">
+        <button data-region="br" aria-pressed="true">Brasil</button
+        ><button data-region="world" aria-pressed="false">Mundo</button>
+      </div>
+      <label class="sr-only" for="topic-search">Buscar tema</label
+      ><input
+        id="topic-search"
+        type="search"
+        placeholder="Encontrar um tema…"
+      />
+      <p class="eyebrow nav-label">EXPLORE OS TEMAS <span>30</span></p>
+      <nav id="topics" aria-label="Temas"></nav>
+      <div class="sidebar-bottom">
+        <button id="favorites">
+          ☆ Notícias salvas <span id="saved-count">0</span></button
+        ><button id="open-draft">✎ Meu rascunho</button
+        ><small>Uma boa leitura.<br />Uma nova perspectiva.</small>
+      </div>
+    </aside>
+    <main id="main">
+      <header>
+        <div
+          class="language-switch"
+          role="group"
+          aria-label="Idioma da interface"
+        >
+          <button data-language="pt" aria-pressed="true">Português</button
+          ><button data-language="en" aria-pressed="false">English</button>
+        </div>
+        <span>CURADORIA PARA QUEM QUER IR ALÉM</span
+        ><button id="settings-open" class="quiet">Configurar IA ↗</button>
+      </header>
+      <section class="hero">
+        <div>
+          <p class="eyebrow" id="region-label">SEU RADAR / BRASIL</p>
+          <h1 id="category-title">Tecnologia</h1>
+          <p>
+            As ideias e movimentos que conectam tecnologia, dados e negócios.
+          </p>
+        </div>
+        <div class="stamp">
+          <b>30</b><span>temas para<br />ampliar seu olhar</span>
+        </div>
+      </section>
+      <section class="subtopic-section" id="subtopic-section">
+        <label for="subtopic">Subtema</label
+        ><select id="subtopic"></select
+        ><small>Notícias mantêm o idioma da fonte.</small>
+      </section>
+      <div class="feed-heading">
+        <div>
+          <b><span class="dot"></span>Na sua leitura de hoje</b>
+          <p id="feed-status" role="status">Conectando às fontes…</p>
+        </div>
+        <button id="refresh" class="button secondary">↻ Atualizar</button>
+      </div>
+      <section class="filters" aria-label="Filtrar notícias">
+        <label class="search"
+          ><span class="sr-only">Buscar notícias</span
+          ><input
+            id="search"
+            type="search"
+            placeholder="Buscar notícia, empresa ou palavra-chave…" /></label
+        ><label
+          ><span class="sr-only">Período</span
+          ><select id="period">
+            <option value="0">Qualquer data</option>
+            <option value="1">Últimas 24 horas</option>
+            <option value="7">Últimos 7 dias</option>
+            <option value="30">Últimos 30 dias</option>
+          </select></label
+        ><label
+          ><span class="sr-only">Fonte</span
+          ><select id="source">
+            <option value="">Todas as fontes</option>
+          </select></label
+        ><label
+          ><span class="sr-only">Ordenar</span
+          ><select id="sort">
+            <option value="new">Mais recentes</option>
+            <option value="old">Mais antigas</option>
+          </select></label
+        >
+      </section>
+      <div class="results-line">
+        <span id="results" aria-live="polite"></span
+        ><button id="clear-filters" class="quiet">Limpar filtros</button>
+      </div>
+      <section id="news-grid" class="news-grid" aria-label="Notícias"></section>
+      <footer>
+        Leia a matéria original e confira o contexto antes de compartilhar. Os
+        rascunhos são sugestões editáveis.
+      </footer>
+    </main>
+    <dialog id="editor">
+      <form method="dialog" class="dialog-header">
+        <div>
+          <p class="eyebrow">DA LEITURA À CONVERSA</p>
+          <h2>Seu próximo post</h2>
+        </div>
+        <button aria-label="Fechar editor" class="icon-button">×</button>
+      </form>
+      <div class="editor-body">
+        <p id="selected-title">Escolha uma notícia para começar.</p>
+        <a id="selected-link" target="_blank" rel="noopener noreferrer"
+          >Ler notícia original ↗</a
+        >
+        <div class="editor-options">
+          <label
+            >Tom<select id="tone">
+              <option value="profissional">Profissional</option>
+              <option value="analitico">Analítico</option>
+              <option value="persuasivo">Persuasivo</option>
+              <option value="descontraido">Descontraído</option>
+            </select></label
+          ><label
+            >Idioma<select id="language">
+              <option value="pt">Português</option>
+              <option value="en">English</option>
+            </select></label
+          ><label
+            >Emojis<select id="emojis">
+              <option value="medium">Moderados</option>
+              <option value="none">Sem emojis</option>
+              <option value="high">Expressivos</option>
+            </select></label
+          ><label
+            >Hashtags<select id="hashtags">
+              <option value="few">Poucas</option>
+              <option value="none">Sem hashtags</option>
+              <option value="many">Mais hashtags</option>
+            </select></label
+          >
+        </div>
+        <label for="instructions">Contexto adicional para a IA (opcional)</label
+        ><textarea
+          id="instructions"
+          rows="2"
+          maxlength="2000"
+          placeholder="Ex.: destaque as implicações para pequenas empresas"
+        ></textarea
+        ><button id="generate" class="button primary">✦ Gerar rascunho</button>
+        <p id="generation-status" class="muted" role="status">
+          Você revisa, edita e decide o que publicar.
+        </p>
+        <div class="mockup">
+          <div class="profile">
+            <span class="avatar">eu</span>
+            <div>
+              <b>Sua publicação</b><small>Prévia do texto · LinkedIn</small>
+            </div>
+          </div>
+          <label class="sr-only" for="draft">Texto do post</label
+          ><textarea
+            id="draft"
+            rows="12"
+            placeholder="Seu rascunho aparece aqui. Você também pode escrever livremente."
+          ></textarea>
+        </div>
+        <div class="draft-meta">
+          <span id="draft-count">0 / 3000 caracteres</span
+          ><span id="draft-storage">Salvo neste navegador</span>
+        </div>
+        <div class="editor-actions">
+          <button id="copy" class="button primary">Copiar texto</button
+          ><button id="export" class="button secondary">Baixar .txt</button>
+        </div>
+      </div>
+    </dialog>
+    <dialog id="settings">
+      <form method="dialog" class="dialog-header">
+        <h2>Configurar IA</h2>
+        <button aria-label="Fechar configurações" class="icon-button">×</button>
+      </form>
+      <div class="editor-body">
+        <p id="settings-help">
+          A chave fica apenas na memória desta aba e é enviada ao servidor para
+          gerar rascunhos com Gemini. Sem chave, use o modelo local.
+        </p>
+        <label for="api-key">Chave da API Gemini</label
+        ><input
+          id="api-key"
+          type="password"
+          autocomplete="off"
+          spellcheck="false"
+        /><button id="save-key" class="button primary">Usar nesta sessão</button
+        ><button id="clear-key" class="button secondary">Remover chave</button>
+      </div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
